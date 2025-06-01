@@ -31,7 +31,32 @@ Developed by: Keziah.F
 Register Number: 212223040094 
 */
 ```
+```
+def minJumps(arr, n):
+    ##########  Add your code here ##############
+    
+    jumps = [0 for i in range(n)]
+ 
+    if (n == 0) or (arr[0] == 0):
+        return float('inf')
+ 
+    jumps[0] = 0
+    for i in range(1, n):
+        jumps[i] = float('inf')
+        for j in range(i):
+            if (i <= j + arr[j]) and (jumps[j] != float('inf')):
+                jumps[i] = min(jumps[i], jumps[j] + 1)
+                break
+    return jumps[n-1]
+    
+    
+arr = []
+n = int(input()) #len(arr)
+for i in range(n):
+    arr.append(int(input()))
+print('Minimum number of jumps to reach','end is', minJumps(arr,n))
 
+```
 ## Output:
 
 ![image](https://github.com/user-attachments/assets/65a4aee2-299b-4549-8aac-c995557a1ef0)
